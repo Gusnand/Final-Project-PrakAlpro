@@ -80,62 +80,68 @@ void tambahdata() {
 
     fptr = fopen("inventory.txt","a"); //a untuk menambahkan data pada file (bukan overwrite)
 	char kodebarangUser2[10];
+	masuk:
 	currentItems--;
 	int flag = 0;
     if(fptr != NULL) {
 		int pastiin;
 
         currentItems++;
-
+		
         printf("Masukkan Kode Barang : ");
         fflush(stdin);
         gets(kodebarangUser2);
 		for(int i = 0; i < currentItems; i++){
-			pastiin = strcmp(kodebarangUser2, barang[currentItems].kodebarang);
+			pastiin = strcmp(barang[i].kodebarang, kodebarangUser2);
 			if(pastiin == 0){
 				flag = 1;
+				break;
+			}else{
+				continue;
 			}
 		}
-
 		if(flag == 0){
+			strcpy(barang[currentItems].kodebarang, kodebarangUser2);
+			fputs(barang[currentItems].kodebarang, fptr);
+			fputs("\n", fptr);
 			
+			printf("Masukkan Nama Barang : ");
+			//fflush(stdin);
+			gets(barang[currentItems].nama);
+			fputs(barang[currentItems].nama, fptr);
+			fputs("\n", fptr);
+
+			printf("Masukkan Kategori Barang : ");
+			//fflush(stdin);
+			gets(barang[currentItems].kategori);
+			fputs(barang[currentItems].kategori, fptr);
+			fputs("\n", fptr);
+
+			printf("Masukkan Harga Barang : ");
+			//fflush(stdin);
+			gets(barang[currentItems].harga);
+			fputs(barang[currentItems].harga, fptr);
+			fputs("\n", fptr);
+			
+			printf("Masukkan Jumlah Barang : ");     
+			//fflush(stdin);
+			gets(barang[currentItems].jumlah);
+			fputs(barang[currentItems].jumlah, fptr);
+			fputs("\n", fptr);
+			
+			fputs("=======================", fptr);
+			fputs("\n", fptr);
+			printf("Data Berhasil Ditambahkan !\n");
+			system("PAUSE");
+			system("CLS");
+		}else{
+			printf("Barang Sudah Ada di Database.\n");
+			system("PAUSE");
+			system("CLS");
+			goto masuk;
 		}
-		
-		fputs(barang[currentItems].kodebarang, fptr);
-		fputs("\n", fptr);
-		
-        printf("Masukkan Nama Barang : ");
-        //fflush(stdin);
-        gets(barang[currentItems].nama);
-		fputs(barang[currentItems].nama, fptr);
-		fputs("\n", fptr);
-
-        printf("Masukkan Kategori Barang : ");
-        //fflush(stdin);
-        gets(barang[currentItems].kategori);
-		fputs(barang[currentItems].kategori, fptr);
-		fputs("\n", fptr);
-
-		printf("Masukkan Harga Barang : ");
-        //fflush(stdin);
-        gets(barang[currentItems].harga);
-		fputs(barang[currentItems].harga, fptr);
-		fputs("\n", fptr);
-		
-        printf("Masukkan Jumlah Barang : ");     
-        //fflush(stdin);
-        gets(barang[currentItems].jumlah);
-		fputs(barang[currentItems].jumlah, fptr);
-		fputs("\n", fptr);
-		
-		fputs("=======================", fptr);
-		fputs("\n", fptr);
 	}
-    
     fclose(fptr);
-	printf("Data Berhasil Ditambahkan !\n");
-	system("PAUSE");
-	system("CLS");
 }
 
 void updateFile(){

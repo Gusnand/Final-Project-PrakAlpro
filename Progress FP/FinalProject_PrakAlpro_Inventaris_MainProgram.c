@@ -145,21 +145,29 @@ void tambahdata() {
 }
 
 void updateFile(){
+	int sisa;
+	char sisaBuffer[10];
 	remove ("inventory.txt"); //file dihapus dulu lalu ditulis ulang
 	fptr = fopen("inventory.txt", "w"); //w untuk menulis ulang dari awal dengan data terbaru
 	for(int i = 0; i < currentItems; i++){
-		fputs(barang[i].kodebarang, fptr);
-		fputs("\n", fptr);
-		fputs(barang[i].nama, fptr);
-		fputs("\n", fptr);
-		fputs(barang[i].kategori, fptr);
-		fputs("\n", fptr);
-		fputs(barang[i].harga, fptr);
-		fputs("\n", fptr);
-		fputs(barang[i].jumlah, fptr);
-		fputs("\n", fptr);
-		fputs("=======================", fptr);
-		fputs("\n", fptr);
+		sisa = atoi(barang[i].jumlah);
+		if(sisa != 0){
+			itoa(sisa, sisaBuffer, 10);
+			strcpy(barang[i].jumlah, sisaBuffer);
+
+			fputs(barang[i].kodebarang, fptr);
+			fputs("\n", fptr);
+			fputs(barang[i].nama, fptr);
+			fputs("\n", fptr);
+			fputs(barang[i].kategori, fptr);
+			fputs("\n", fptr);
+			fputs(barang[i].harga, fptr);
+			fputs("\n", fptr);
+			fputs(barang[i].jumlah, fptr);
+			fputs("\n", fptr);
+			fputs("=======================", fptr);
+			fputs("\n", fptr);
+		}
 	}
 	fclose(fptr);
 }

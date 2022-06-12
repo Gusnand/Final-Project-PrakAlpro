@@ -220,9 +220,10 @@ int main() {
 	char pilih;
 	menu :
 	printf("Final Project Praktikum Algoritma dan Pemrograman\n");
-	printf("Data Inventaris dan Kasir\n"); //sebagai nama aplikasi
+	printf("Data Inventaris Barang dan Kasir\n"); //sebagai nama program yang dijalankan
 	printf("=================================================\n");
-	printf("1. Lihat Barang \n");
+	// meminta user agar memilih sub program yang diinginkan
+	printf("1. Lihat Barang \n"); 
 	printf("2. Tambah Barang \n");
 	printf("3. Transaksi Barang\n");
 	printf("4. Keluar");

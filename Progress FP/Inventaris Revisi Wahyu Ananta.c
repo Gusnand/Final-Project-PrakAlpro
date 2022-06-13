@@ -68,7 +68,7 @@ void lihatdata() {
 		fclose(fptr);
 	    system("CLS");
 		
-		printf("KODE BARANG\tNAMA BARANG       \tKATEGORI BARANG      \tHARGA BARANG   \tJUMLAH BARANG\n"); //menyesuaikan kolom tabelnya pada saat running output programnya
+		printf("KODE BARANG\tNAMA BARANG        \tKATEGORI BARANG      \tHARGA BARANG   \tJUMLAH BARANG\n"); //menyesuaikan kolom tabelnya pada saat running output programnya
 		
 		for(i = 0; i < currentItems; i++) {
 			printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\n", barang[i].kodebarang, barang[i].nama, barang[i].kategori, barang[i].harga, barang[i].jumlah);
@@ -266,4 +266,3 @@ int main() {
 	}
 	return 0;
 }
-
